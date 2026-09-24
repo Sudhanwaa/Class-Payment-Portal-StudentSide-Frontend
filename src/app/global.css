@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 45 128 109;
+  --color-primary-hover: 35 107 91;
+  --color-primary-soft: 229 243 239;
+  --color-header: 23 55 70;
+  --color-page: 247 249 248;
+  --color-surface: 255 255 255;
+  --color-heading: 23 55 70;
+  --color-body: 113 132 138;
+  --color-border: 221 229 226;
+  --color-button-text: 255 255 255;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: rgb(var(--color-page));
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: rgb(var(--color-heading));
+}
+
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgb(var(--color-primary) / 0.22);
+  outline-offset: 2px;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.78;
+  }
+}
+
+.animate-enter {
+  animation: enter 260ms ease-out both;
+}
+
+.skeleton {
+  animation: soft-pulse 1.4s ease-in-out infinite;
+  background: #e7eceb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
